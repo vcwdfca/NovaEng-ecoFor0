@@ -3,3 +3,14 @@
 
 // If you wish to use the default helper methods, uncomment the line below
 // apply from: 'gradle/scripts/helpers.gradle'
+spotless {
+    java {
+        // Don't forget to change the path.
+        target 'src/*/java/com/vcwdfca/**/*.java'
+
+        leadingTabsToSpaces()
+        endWithNewline()
+        removeUnusedImports()
+        expandWildcardImports()
+    }
+}
