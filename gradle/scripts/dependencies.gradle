@@ -75,10 +75,6 @@ dependencies {
     // Include OSXNarratorBlocker by default for the dev env, for M1+ Macs
     runtimeOnly 'com.cleanroommc:osxnarratorblocker:1.0'
 
-    // flatDir repositories do not expose module metadata, so Core's transitive
-    // dependencies are declared explicitly below.
-    implementation("kasuminova:NovaEngineering-Core:1.23.2:dev")
-
     // NovaEngineering Core runtime dependencies.
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.+"
 
@@ -86,6 +82,7 @@ dependencies {
     // dependencies preserves their classifiers instead of letting RFG strip
     // them while resolving a flatDir module.
     implementation files(
+        "lib/NovaEngineering-Core-1.23.2-dev.jar",
         "lib/Forgelin-Continuous-2.2.20.0-dev.jar",
         "lib/MMCE-ComponentModelHider-1.1-dev.jar",
         "lib/resourceloader-1.5.3-main.jar",

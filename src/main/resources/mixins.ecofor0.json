@@ -1,11 +1,15 @@
 {
-	"package": "",
+	"package": "com.vcwdfca.ecofor0.mixin",
 	"required": true,
 	"refmap": "${mixin_refmap}",
 	"target": "@env(DEFAULT)",
 	"minVersion": "0.8.5",
 	"compatibilityLevel": "JAVA_8",
-	"mixins": [],
+	"mixins": [
+		"EStorageCellDriveMixin",
+		"ECalculatorCellDriveMixin",
+		"EFabricatorWorkerMixin"
+	],
 	"server": [],
 	"client": []
 }
