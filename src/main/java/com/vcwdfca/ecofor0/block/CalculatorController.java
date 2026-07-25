@@ -8,6 +8,6 @@ public class CalculatorController extends BlockECalculatorController {
 
     public CalculatorController(String level) {
         super(level);
-        REGISTRY.put(this.registryName, this);
+        BlockECalculatorController.REGISTRY.put(this.registryName, this);
     }
 }

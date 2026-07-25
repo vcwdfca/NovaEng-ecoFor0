@@ -7,6 +7,6 @@ public class StorageController extends BlockEStorageController {
 
     public StorageController(String level) {
         super(level);
-        REGISTRY.put(this.registryName, this);
+        BlockEStorageController.REGISTRY.put(this.registryName, this);
     }
 }

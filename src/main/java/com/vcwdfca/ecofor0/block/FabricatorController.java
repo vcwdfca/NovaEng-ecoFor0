@@ -11,6 +11,6 @@ public class FabricatorController extends BlockEFabricatorController {
 
     public FabricatorController(String level) {
         super(level);
-        REGISTRY.put(this.registryName, this);
+        BlockEFabricatorController.REGISTRY.put(this.registryName, this);
     }
 }
