@@ -153,6 +153,15 @@ dependencies {
 
 apply from: 'gradle/scripts/dependencies.gradle'
 
+tasks.named('reobfJar').configure {
+    // Prevent SpecialSource from inheriting Block.REGISTRY's incorrect field mapping.
+    extraSrgEntries.addAll([
+            'FD: github/kasuminova/novaeng/common/block/ecotech/estorage/BlockEStorageController/REGISTRY github/kasuminova/novaeng/common/block/ecotech/estorage/BlockEStorageController/REGISTRY',
+            'FD: github/kasuminova/novaeng/common/block/ecotech/ecalculator/BlockECalculatorController/REGISTRY github/kasuminova/novaeng/common/block/ecotech/ecalculator/BlockECalculatorController/REGISTRY',
+            'FD: github/kasuminova/novaeng/common/block/ecotech/efabricator/BlockEFabricatorController/REGISTRY github/kasuminova/novaeng/common/block/ecotech/efabricator/BlockEFabricatorController/REGISTRY'
+    ])
+}
+
 // Adds Access Transformer files to tasks
 if (propertyBool('use_access_transformer')) {
     for (def location : propertyStringList('access_transformer_locations')) {
