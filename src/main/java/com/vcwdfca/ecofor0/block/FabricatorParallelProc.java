@@ -9,10 +9,13 @@ import java.util.List;
 
 public class FabricatorParallelProc extends BlockEFabricatorParallelProc {
     /**
-     * L13 并行处理器的 Modifier 配置。
-     * 沿 Core 梯度（L4→L6→L9 约 ×3）推算：
-     * - 普通 Modifier：ADD 768（L9 的 256 × 3）
-     * - 超频 Modifier：ADD 1152（L9 的 384 × 3），能耗系数 0.96（L9 的 0.97 - 0.01）
+     * L13 parallel-processor modifier configuration, extrapolated from Core's
+     * approximately threefold L4-to-L6-to-L9 progression:
+     * <ul>
+     * <li>Normal modifier: ADD 768 (L9's 256 * 3).</li>
+     * <li>Overclock modifier: ADD 1152 (L9's 384 * 3) and 0.96 energy
+     * multiplier (L9's 0.97 - 0.01).</li>
+     * </ul>
      */
     public static final BlockEFabricatorParallelProc L13 = new FabricatorParallelProc("l13",
             Collections.singletonList(new EFabricatorParallelProc.Modifier(EFabricatorParallelProc.Type.ADD, 768.0, false)),

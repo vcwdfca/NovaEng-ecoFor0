@@ -24,11 +24,12 @@ import net.minecraftforge.fml.relauncher.Side;
 import java.util.Objects;
 
 /**
- * 客户端物品模型注册。仅在客户端事件总线触发。
+ * Registers client item models and runs only on the client event bus.
  * <p>
- * 与 Core 的 {@code RegistryBlocks#registerBlockModel} 做法一致：把物品模型指向
- * {@code <registryName>#inventory}。L13 走静态物品模型（见 {@code assets/novaeng_core/models/item/}），
- * 暂不复刻 Core 的按电量动态渲染（{@code EStorageEnergyCellItemRenderer}）。
+ * Matches Core's {@code RegistryBlocks#registerBlockModel} behavior by
+ * targeting {@code <registryName>#inventory}. L13 uses static item models in
+ * {@code assets/novaeng_core/models/item/} and does not replicate Core's
+ * energy-dependent {@code EStorageEnergyCellItemRenderer}.
  */
 @Mod.EventBusSubscriber(value = Side.CLIENT, modid = Tags.MOD_ID)
 public final class RegistryModels {
@@ -38,20 +39,16 @@ public final class RegistryModels {
 
     @SubscribeEvent
     public static void onRegisterModels(final ModelRegistryEvent event) {
-        // 第一期：存储
         registerInventoryModel(StorageEnergyCell.L13);
 
-        // 第二期：计算
         registerInventoryModel(CalculatorThreadCore.L13);
         registerInventoryModel(CalculatorThreadCoreHyper.L13);
         registerInventoryModel(CalculatorParallelProc.L13);
         registerInventoryModel(CalculatorTail.L13);
 
-        // 第三期：合成
         registerInventoryModel(FabricatorParallelProc.L13);
         registerInventoryModel(FabricatorTail.L13);
 
-        // 第四期：Controller 主机
         registerInventoryModel(StorageController.L13);
         registerInventoryModel(CalculatorController.L13);
         registerInventoryModel(FabricatorController.L13);

@@ -13,8 +13,8 @@ public class CalculatorThreadCore extends BlockECalculatorThreadCore {
     }
 
     /**
-     * 为 L13 创建配套的 ItemBlock。
-     * 注意：ThreadCore 破坏时掉落 {@code this.item}，必须在注册后调用 {@code block.setItem(itemBlock)}。
+     * Creates the L13 ItemBlock. Thread cores drop {@code this.item} when
+     * broken, so registration must subsequently call {@code block.setItem(itemBlock)}.
      */
     public static ItemECalculatorThreadCore createItemBlock(BlockECalculatorThreadCore block) {
         ItemECalculatorThreadCore itemBlock = new ItemECalculatorThreadCore(block);

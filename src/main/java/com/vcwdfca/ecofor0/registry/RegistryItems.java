@@ -28,13 +28,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-/**
- * addon 自持的物品注册入口。
- * <p>
- * 不复用 NovaEngineering-Core 的 {@code RegistryBlocks#prepareItemBlockRegister} 静态入队方法：
- * Core 会在自己的注册事件（{@code priority = LOW}）中消费并 {@code clear()} 这些列表，
- * addon 若入队存在时序风险。因此这里直接通过 {@code event.getRegistry().register(...)} 注册。
- */
 @Mod.EventBusSubscriber(modid = Tags.MOD_ID)
 public final class RegistryItems {
 
@@ -43,29 +36,21 @@ public final class RegistryItems {
 
     @SubscribeEvent
     public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
-        // 第一期：存储
         event.getRegistry().register(createItemBlock(StorageEnergyCell.L13));
 
-        // 第二期：计算
         registerThreadCoreWithItem(event, CalculatorThreadCore.L13);
         registerThreadCoreWithItem(event, CalculatorThreadCoreHyper.L13);
         event.getRegistry().register(createItemBlock(CalculatorParallelProc.L13));
         event.getRegistry().register(createItemBlock(CalculatorTail.L13));
 
-        // 第三期：合成
         event.getRegistry().register(createItemBlock(FabricatorParallelProc.L13));
         event.getRegistry().register(createItemBlock(FabricatorTail.L13));
 
-        // 第四期：Controller 主机（使用 ItemBlockController）
         event.getRegistry().register(createControllerItemBlock(StorageController.L13));
         event.getRegistry().register(createControllerItemBlock(CalculatorController.L13));
         event.getRegistry().register(createControllerItemBlock(FabricatorController.L13));
     }
 
-    /**
-     * 为方块创建配套 ItemBlock，并从方块复制 registryName / translationKey。
-     * 能源仓在 Core 中也是走普通 {@link ItemBlock}（非自定义 ItemBlock），此处保持一致。
-     */
     private static ItemBlock createItemBlock(final Block block) {
         final ResourceLocation registryName = Objects.requireNonNull(
                 block.getRegistryName(), "block registryName must not be null");
@@ -76,8 +61,9 @@ public final class RegistryItems {
     }
 
     /**
-     * ThreadCore 特殊处理：必须使用 {@link ItemECalculatorThreadCore} 并调用 {@code block.setItem}。
-     * 否则破坏方块时 {@code BlockECalculatorThreadCore#breakBlock} 会因 {@code this.item == null} 掉落空气。
+     * Thread cores must use {@link ItemECalculatorThreadCore} and call
+     * {@code block.setItem}. Otherwise, {@code BlockECalculatorThreadCore#breakBlock}
+     * drops air because {@code this.item == null}.
      */
     private static void registerThreadCoreWithItem(final RegistryEvent.Register<Item> event,
                                                     final BlockECalculatorThreadCore block) {
@@ -86,9 +72,6 @@ public final class RegistryItems {
         event.getRegistry().register(itemBlock);
     }
 
-    /**
-     * Controller 方块使用 {@link ItemBlockController}（继承自 modularmachinery）。
-     */
     private static ItemBlockController createControllerItemBlock(final BlockController block) {
         final ResourceLocation registryName = Objects.requireNonNull(
                 block.getRegistryName(), "controller registryName must not be null");

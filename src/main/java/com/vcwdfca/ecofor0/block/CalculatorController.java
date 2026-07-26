@@ -19,7 +19,10 @@ import java.util.List;
 
 import static com.vcwdfca.ecofor0.util.Util.info;
 
-/** L13 计算控制器。L13 的有限等级枚举消费者由 addon Mixin 按控制器类型单独处理。 */
+/**
+ * L13 calculator controller. The add-on Mixin handles consumers of Core's
+ * finite tier enum separately by controller type.
+ */
 public class CalculatorController extends BlockECalculatorController implements IPatternAddition {
 
     private static final BlockArray.BlockInformation CASING = info(BlockECalculatorCasing.INSTANCE);
@@ -35,6 +38,7 @@ public class CalculatorController extends BlockECalculatorController implements 
         TaggedPositionBlockArray parts = this.getParentMachine().getPattern();
         parts.addBlock(1, 0, 1, info(BlockECalculatorMEChannel.INSTANCE));
         parts.addBlock(1, 1, 1, info(BlocksMM.fluidInputHatch, BlocksMM.meFluidInputBus));
+        parts.addBlock(1, -1, 1, info(BlocksMM.fluidOutputHatch, BlocksMM.meFluidOutputBus));
         List<BlockPos> posList = new ArrayList<>();
         posList.add(new BlockPos(-1, 0, 1));
         posList.add(new BlockPos(-1, 0, 0));

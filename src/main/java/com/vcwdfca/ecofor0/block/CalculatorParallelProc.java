@@ -4,9 +4,10 @@ import github.kasuminova.novaeng.common.block.ecotech.ecalculator.BlockECalculat
 
 public class CalculatorParallelProc extends BlockECalculatorParallelProc {
     /**
-     * L13 并行度取 131072 (2^17) 而非 1048576 (2^20)。
-     * 原因：ECalculatorController 累加 parallelism 到 int 字段，1048576 约 2048 块即溢出 int(2^31)。
-     * 131072 提供约 16384 块的安全余量，仍是 L9(16384) 的 8 倍。
+     * L13 uses 131072 (2^17) parallelism instead of 1048576 (2^20).
+     * ECalculatorController accumulates parallelism in an int field, so
+     * 1048576 overflows int (2^31) at about 2048 blocks. 131072 remains
+     * eight times L9's 16384 while allowing about 16384 blocks safely.
      */
     public static final BlockECalculatorParallelProc L13 = new CalculatorParallelProc("l13", 131072);
 
