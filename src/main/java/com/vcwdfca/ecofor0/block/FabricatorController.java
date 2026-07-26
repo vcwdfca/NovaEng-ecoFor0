@@ -14,9 +14,7 @@ import hellfirepvp.modularmachinery.common.util.BlockArray;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import static com.vcwdfca.ecofor0.util.Util.info;
 
@@ -36,29 +34,26 @@ public class FabricatorController extends BlockEFabricatorController implements 
 
     @Override
     public void setMainPattern() {
-        TaggedPositionBlockArray parts = this.getParentMachine().getPattern();
+        this.parentMachine = this.getParentMachine();
+        TaggedPositionBlockArray parts = this.parentMachine.getPattern();
         parts.addBlock(1, 0, 1, info(BlockEFabricatorMEChannel.INSTANCE));
         parts.addBlock(1, 1, 1, info(BlocksMM.fluidInputHatch, BlocksMM.meGasInputBus, BlocksMM.meFluidInputBus));
         parts.addBlock(1, -1, 1, info(BlocksMM.fluidOutputHatch, BlocksMM.meGasOutputBus, BlocksMM.meFluidOutputBus));
         parts.addBlock(-1, 0, 1, info(BlockEFabricatorVent.INSTANCE.getStateFromMeta(2)));
         parts.addBlock(0, 0, 1, info(BlockEFabricatorVent.INSTANCE.getStateFromMeta(2)));
 
-        List<BlockPos> posList = new ArrayList<>();
-        posList.add(new BlockPos(-1, 0, 0));
-        posList.add(new BlockPos(1, 0, 0));
-        posList.add(new BlockPos(1, 1, 0));
-        posList.add(new BlockPos(-1, -1, 1));
-        posList.add(new BlockPos(0, -1, 1));
-        posList.add(new BlockPos(0, -1, 0));
-        posList.add(new BlockPos(1, -1, 0));
-        posList.add(new BlockPos(-1, 1, 1));
-        posList.add(new BlockPos(-1, 1, 0));
-        posList.add(new BlockPos(0, 1, 1));
-        posList.add(new BlockPos(0, 1, 0));
-        posList.add(new BlockPos(-1, -1, 0));
-        for(BlockPos pos : posList) {
-            parts.addBlock(pos, CASING);
-        }
+        parts.addBlock(-1, 0, 0, CASING);
+        parts.addBlock(1, 0, 0, CASING);
+        parts.addBlock(1, 1, 0, CASING);
+        parts.addBlock(-1, -1, 1, CASING);
+        parts.addBlock(0, -1, 1, CASING);
+        parts.addBlock(0, -1, 0, CASING);
+        parts.addBlock(1, -1, 0, CASING);
+        parts.addBlock(-1, 1, 1, CASING);
+        parts.addBlock(-1, 1, 0, CASING);
+        parts.addBlock(0, 1, 1, CASING);
+        parts.addBlock(0, 1, 0, CASING);
+        parts.addBlock(-1, -1, 0, CASING);
     }
 
     @Override
@@ -88,6 +83,6 @@ public class FabricatorController extends BlockEFabricatorController implements 
         partsEnd.addBlock(0, 1, 0, CASING);
         pattern.setPatternEnd(partsEnd);
 
-        this.getParentMachine().addDynamicPattern("workers", pattern);
+        this.parentMachine.addDynamicPattern("workers", pattern);
     }
 }

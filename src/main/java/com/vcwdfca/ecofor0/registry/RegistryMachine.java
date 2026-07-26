@@ -18,7 +18,7 @@ public final class RegistryMachine {
     public static void register() {
         register(
             "extendable_calculator_subsystem_l13",
-            "§9ECO - §5C13 §9可扩展计算子系统",
+            "§9ECO - §5C13 §e可扩展计算子系统",
             CalculatorController.L13
         );
         register(
@@ -28,7 +28,7 @@ public final class RegistryMachine {
         );
         register(
             "extendable_digital_storage_subsystem_l13",
-            "§9ECO - §5L13 §9可扩展存储子系统",
+            "§9ECO - §5L13 §e可扩展存储子系统",
             StorageController.L13
         );
     }
@@ -36,6 +36,7 @@ public final class RegistryMachine {
     private static <C extends BlockController & IPatternAddition> void register(String registryName, String localizedName, C controller) {
         DynamicMachine machine = new DynamicMachine(registryName);
         machine.setLocalizedName(localizedName);
+        machine.setHasFactory(false);
         MachineRegistry.registerMachines(Collections.singleton(machine));
 
         controller.setMainPattern();

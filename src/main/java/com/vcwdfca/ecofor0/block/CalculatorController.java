@@ -13,9 +13,7 @@ import hellfirepvp.modularmachinery.common.util.BlockArray;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import static com.vcwdfca.ecofor0.util.Util.info;
 
@@ -35,28 +33,26 @@ public class CalculatorController extends BlockECalculatorController implements 
 
     @Override
     public void setMainPattern() {
-        TaggedPositionBlockArray parts = this.getParentMachine().getPattern();
+        this.parentMachine = this.getParentMachine();
+        TaggedPositionBlockArray parts = this.parentMachine.getPattern();
         parts.addBlock(1, 0, 1, info(BlockECalculatorMEChannel.INSTANCE));
         parts.addBlock(1, 1, 1, info(BlocksMM.fluidInputHatch, BlocksMM.meFluidInputBus));
         parts.addBlock(1, -1, 1, info(BlocksMM.fluidOutputHatch, BlocksMM.meFluidOutputBus));
-        List<BlockPos> posList = new ArrayList<>();
-        posList.add(new BlockPos(-1, 0, 1));
-        posList.add(new BlockPos(-1, 0, 0));
-        posList.add(new BlockPos(1, 0, 0));
-        posList.add(new BlockPos(0, 0, 1));
-        posList.add(new BlockPos(1, 1, 0));
-        posList.add(new BlockPos(-1, -1, 1));
-        posList.add(new BlockPos(0, -1, 1));
-        posList.add(new BlockPos(0, -1, 0));
-        posList.add(new BlockPos(1, -1, 0));
-        posList.add(new BlockPos(-1, 1, 1));
-        posList.add(new BlockPos(-1, 1, 0));
-        posList.add(new BlockPos(0, 1, 1));
-        posList.add(new BlockPos(0, 1, 0));
-        posList.add(new BlockPos(-1, -1, 0));
-        for(BlockPos pos : posList) {
-            parts.addBlock(pos, CASING);
-        }
+
+        parts.addBlock(-1, 0, 1, CASING);
+        parts.addBlock(-1, 0, 0, CASING);
+        parts.addBlock(1, 0, 0, CASING);
+        parts.addBlock(0, 0, 1, CASING);
+        parts.addBlock(1, 1, 0, CASING);
+        parts.addBlock(-1, -1, 1, CASING);
+        parts.addBlock(0, -1, 1, CASING);
+        parts.addBlock(0, -1, 0, CASING);
+        parts.addBlock(1, -1, 0, CASING);
+        parts.addBlock(-1, 1, 1, CASING);
+        parts.addBlock(-1, 1, 0, CASING);
+        parts.addBlock(0, 1, 1, CASING);
+        parts.addBlock(0, 1, 0, CASING);
+        parts.addBlock(-1, -1, 0, CASING);
     }
 
     @SuppressWarnings("deprecation")
@@ -87,6 +83,6 @@ public class CalculatorController extends BlockECalculatorController implements 
         partsEnd.addBlock(0, 1, 0, info(BlockECalculatorCasing.INSTANCE.getStateFromMeta(2)));
         pattern.setPatternEnd(partsEnd);
 
-        this.getParentMachine().addDynamicPattern("workers", pattern);
+        this.parentMachine.addDynamicPattern("workers", pattern);
     }
 }
