@@ -1,18 +1,19 @@
 package com.vcwdfca.ecofor0.registry;
 
 import com.vcwdfca.ecofor0.Tags;
-import com.vcwdfca.ecofor0.block.CalculatorController;
-import com.vcwdfca.ecofor0.block.CalculatorParallelProc;
-import com.vcwdfca.ecofor0.block.CalculatorTail;
-import com.vcwdfca.ecofor0.block.CalculatorThreadCore;
-import com.vcwdfca.ecofor0.block.CalculatorThreadCoreHyper;
-import com.vcwdfca.ecofor0.block.FabricatorController;
-import com.vcwdfca.ecofor0.block.FabricatorParallelProc;
-import com.vcwdfca.ecofor0.block.FabricatorTail;
-import com.vcwdfca.ecofor0.block.StorageController;
-import com.vcwdfca.ecofor0.block.StorageEnergyCell;
+import com.vcwdfca.ecofor0.calculator.CalculatorController;
+import com.vcwdfca.ecofor0.calculator.CalculatorParallelProc;
+import com.vcwdfca.ecofor0.calculator.CalculatorTail;
+import com.vcwdfca.ecofor0.calculator.CalculatorThreadCore;
+import com.vcwdfca.ecofor0.calculator.CalculatorThreadCoreHyper;
+import com.vcwdfca.ecofor0.fabricator.FabricatorController;
+import com.vcwdfca.ecofor0.fabricator.FabricatorParallelProc;
+import com.vcwdfca.ecofor0.fabricator.FabricatorTail;
+import com.vcwdfca.ecofor0.storage.StorageController;
+import com.vcwdfca.ecofor0.storage.StorageEnergyCell;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -27,9 +28,9 @@ import java.util.Objects;
  * Registers client item models and runs only on the client event bus.
  * <p>
  * Matches Core's {@code RegistryBlocks#registerBlockModel} behavior by
- * targeting {@code <registryName>#inventory}. L13 uses static item models in
- * {@code assets/novaeng_core/models/item/} and does not replicate Core's
- * energy-dependent {@code EStorageEnergyCellItemRenderer}.
+ * targeting {@code <registryName>#inventory}. The blockstate inventory
+ * variants provide the item appearance; no standalone item model files are
+ * needed for these blocks.
  */
 @Mod.EventBusSubscriber(value = Side.CLIENT, modid = Tags.MOD_ID)
 public final class RegistryModels {
@@ -56,6 +57,9 @@ public final class RegistryModels {
 
     private static void registerInventoryModel(final Block block) {
         final Item item = Item.getItemFromBlock(block);
+        if (item == Items.AIR) {
+            throw new IllegalStateException("No ItemBlock registered for " + block.getRegistryName());
+        }
         final ResourceLocation registryName = Objects.requireNonNull(
                 block.getRegistryName(),
                 "Block registryName must not be null for model registration: " + block.getClass().getName());

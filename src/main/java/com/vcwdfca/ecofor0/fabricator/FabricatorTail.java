@@ -1,4 +1,4 @@
-package com.vcwdfca.ecofor0.block;
+package com.vcwdfca.ecofor0.fabricator;
 
 import github.kasuminova.novaeng.common.block.ecotech.efabricator.BlockEFabricatorTail;
 

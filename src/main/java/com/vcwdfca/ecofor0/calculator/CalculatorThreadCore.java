@@ -1,4 +1,4 @@
-package com.vcwdfca.ecofor0.block;
+package com.vcwdfca.ecofor0.calculator;
 
 import github.kasuminova.novaeng.common.block.ecotech.ecalculator.BlockECalculatorThreadCore;
 import github.kasuminova.novaeng.common.item.ecalculator.ItemECalculatorThreadCore;
@@ -20,7 +20,6 @@ public class CalculatorThreadCore extends BlockECalculatorThreadCore {
         ItemECalculatorThreadCore itemBlock = new ItemECalculatorThreadCore(block);
         itemBlock.setRegistryName(Objects.requireNonNull(block.getRegistryName(),
                 "block registryName must not be null"));
-        itemBlock.setTranslationKey(block.getTranslationKey());
         return itemBlock;
     }
 }

@@ -5,18 +5,10 @@ tile.novaeng_core.ecalculator_parallel_proc_l13.name=§9ECO - §cCA13 §9Computi
 tile.novaeng_core.ecalculator_tail_l13.name=§9ECO - §cCA13 §9Computing Core - Tail Component
 tile.novaeng_core.efabricator_parallel_proc_l13.name=§9ECO - §cFA13 §9Fabricator Core - Parallel Processor
 tile.novaeng_core.efabricator_tail_l13.name=§9ECO - §cFA13 §9Fabricator Core - Tail Component
-tile.novaeng_core.extendable_digital_storage_subsystem_l13.name=§9ECO - §cST13 §3Extendable Digital Storage Subsystem
-tile.novaeng_core.extendable_calculator_subsystem_l13.name=§9ECO - §cCA13 §eExtendable Calculator Subsystem
-tile.novaeng_core.extendable_fabricator_subsystem_l13.name=§9ECO - §cFA13 §eExtendable Fabricator Subsystem
+tile.novaeng_core.extendable_digital_storage_subsystem_l13.name=§9ECO - §cS13 §9Extendable Digital Storage Subsystem Host
+tile.novaeng_core.extendable_calculator_subsystem_l13.name=§9ECO - §cC13 §bExtendable Calculator Subsystem Host
+tile.novaeng_core.extendable_fabricator_subsystem_l13.name=§9ECO - §cF13 §eExtendable Fabricator Subsystem Host
 
-item.novaeng_core.estorage_energy_cell_l13.name=§9ECO - §cST13 §9High-Density Energy Cell
-item.novaeng_core.ecalculator_thread_core_l13.name=§9ECO - §cCA13 §9Computing Core - Thread Core
-item.novaeng_core.ecalculator_thread_core_hyper_l13.name=§9ECO - §cCA13 §9Computing Core - Hyper Thread Core
-item.novaeng_core.ecalculator_parallel_proc_l13.name=§9ECO - §cCA13 §9Computing Core - Parallel Processor
-item.novaeng_core.ecalculator_tail_l13.name=§9ECO - §cCA13 §9Computing Core - Tail Component
-item.novaeng_core.efabricator_parallel_proc_l13.name=§9ECO - §cFA13 §9Fabricator Core - Parallel Processor
-item.novaeng_core.efabricator_tail_l13.name=§9ECO - §cFA13 §9Fabricator Core - Tail Component
-
-item.novaeng_core.extendable_digital_storage_subsystem_l13.name=§9ECO - §cS13 §eExtendable Digital Storage Subsystem
-item.novaeng_core.extendable_calculator_subsystem_l13.name=§9ECO - §cC13 §eExtendable Calculator Subsystem
-item.novaeng_core.extendable_fabricator_subsystem_l13.name=§9ECO - §cF13 §eExtendable Fabricator Subsystem
+modularmachinery.extendable_digital_storage_subsystem_l13=§9ECO - §cS13 §9Extendable Digital Storage Subsystem Host
+modularmachinery.extendable_calculator_subsystem_l13=§9ECO - §cC13 §bExtendable Calculator Subsystem Host
+modularmachinery.extendable_fabricator_subsystem_l13=§9ECO - §cF13 §eExtendable Fabricator Subsystem Host

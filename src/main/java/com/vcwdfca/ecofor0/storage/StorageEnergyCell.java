@@ -1,4 +1,4 @@
-package com.vcwdfca.ecofor0.block;
+package com.vcwdfca.ecofor0.storage;
 
 import github.kasuminova.novaeng.common.block.ecotech.estorage.BlockEStorageEnergyCell;
 

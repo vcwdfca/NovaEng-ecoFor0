@@ -1,6 +1,7 @@
-package com.vcwdfca.ecofor0.block;
+package com.vcwdfca.ecofor0.calculator;
 
 import com.vcwdfca.ecofor0.util.IPatternAddition;
+import com.vcwdfca.ecofor0.util.IControllerLevelDisplay;
 import github.kasuminova.mmce.common.util.DynamicPattern;
 import github.kasuminova.novaeng.common.block.ecotech.ecalculator.BlockECalculatorCasing;
 import github.kasuminova.novaeng.common.block.ecotech.ecalculator.BlockECalculatorCellDrive;
@@ -17,11 +18,8 @@ import java.util.Collections;
 
 import static com.vcwdfca.ecofor0.util.Util.info;
 
-/**
- * L13 calculator controller. The add-on Mixin handles consumers of Core's
- * finite tier enum separately by controller type.
- */
-public class CalculatorController extends BlockECalculatorController implements IPatternAddition {
+/** L13 calculator controller with an add-on-specific display tier. */
+public class CalculatorController extends BlockECalculatorController implements IPatternAddition, IControllerLevelDisplay {
 
     private static final BlockArray.BlockInformation CASING = info(BlockECalculatorCasing.INSTANCE);
     public static final CalculatorController L13 = new CalculatorController("l13");
@@ -29,6 +27,11 @@ public class CalculatorController extends BlockECalculatorController implements 
     public CalculatorController(String level) {
         super(level);
         BlockECalculatorController.REGISTRY.put(this.registryName, this);
+    }
+
+    @Override
+    public String getDisplayLevel() {
+        return "L13";
     }
 
     @Override

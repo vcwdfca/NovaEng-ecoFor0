@@ -1,8 +1,9 @@
 package com.vcwdfca.ecofor0.registry;
 
-import com.vcwdfca.ecofor0.block.CalculatorController;
-import com.vcwdfca.ecofor0.block.FabricatorController;
-import com.vcwdfca.ecofor0.block.StorageController;
+import com.vcwdfca.ecofor0.calculator.CalculatorController;
+import com.vcwdfca.ecofor0.fabricator.FabricatorController;
+import com.vcwdfca.ecofor0.storage.StorageController;
+import com.vcwdfca.ecofor0.util.IControllerLevelDisplay;
 import com.vcwdfca.ecofor0.util.IPatternAddition;
 import hellfirepvp.modularmachinery.common.block.BlockController;
 import hellfirepvp.modularmachinery.common.machine.DynamicMachine;
@@ -18,24 +19,25 @@ public final class RegistryMachine {
     public static void register() {
         register(
             "extendable_calculator_subsystem_l13",
-            "§9ECO - §5C13 §e可扩展计算子系统",
+            "§b可扩展计算子系统主机",
             CalculatorController.L13
         );
         register(
             "extendable_fabricator_subsystem_l13",
-            "§9ECO - §bF13 §e可扩展合成子系统",
+            "§e可扩展合成子系统主机",
             FabricatorController.L13
         );
         register(
             "extendable_digital_storage_subsystem_l13",
-            "§9ECO - §5L13 §e可扩展存储子系统",
+            "§9可扩展存储子系统主机",
             StorageController.L13
         );
     }
 
-    private static <C extends BlockController & IPatternAddition> void register(String registryName, String localizedName, C controller) {
+    private static <C extends BlockController & IPatternAddition & IControllerLevelDisplay> void register(
+            String registryName, String description, C controller) {
         DynamicMachine machine = new DynamicMachine(registryName);
-        machine.setLocalizedName(localizedName);
+        machine.setLocalizedName("§9ECO - §c" + controller.getDisplayLevel() + " " + description);
         machine.setHasFactory(false);
         MachineRegistry.registerMachines(Collections.singleton(machine));
 

@@ -3,9 +3,6 @@ apply from: 'gradle/scripts/helpers.gradle'
 repositories {
     // Other repositories described by default:
     // CleanroomMC: https://maven.cleanroommc.com
-    flatDir {
-        dirs "lib"
-    }
     maven {
         name 'Aliyun Public'
         url 'https://maven.aliyun.com/nexus/content/groups/public/'
@@ -75,23 +72,36 @@ dependencies {
     // Include OSXNarratorBlocker by default for the dev env, for M1+ Macs
     runtimeOnly 'com.cleanroommc:osxnarratorblocker:1.0'
 
-    // NovaEngineering Core runtime dependencies.
-    implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.+"
+    // Scripts are reference material only; Java code does not compile against
+    // CraftTweaker, but the mod remains available in the dev runtime.
+    runtimeOnly "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.+"
 
-    // These local artifacts are already dev/deobfuscated jars. Using file
-    // dependencies preserves their classifiers instead of letting RFG strip
-    // them while resolving a flatDir module.
-    implementation files(
-        "lib/NovaEngineering-Core-1.23.2-dev.jar",
+    // These local artifacts are already dev/deobfuscated jars. Core is needed
+    // for compilation; the remaining jars only support the development runtime.
+    implementation files("lib/NovaEngineering-Core-1.23.2-dev.jar")
+    runtimeOnly files(
         "lib/Forgelin-Continuous-2.2.20.0-dev.jar",
         "lib/MMCE-ComponentModelHider-1.1-dev.jar",
         "lib/resourceloader-1.5.3-main.jar",
         "lib/circulation_networks-1.12.2-1.0.0-dev.jar"
     )
 
+    // The addon directly references Modular Machinery and AE2 APIs. Keep them
+    // compile-visible without making the rest of the integration pack compile
+    // dependencies.
+    [
+        "curse.maven:modularmachinery-community-edition-817377:7306619",
+        "curse.maven:ae2-extended-life-570458:6302098"
+    ].each {
+        compileOnly(rfg.deobf(it))
+        runtimeOnly(rfg.deobf(it))
+    }
+
+    compileOnly 'software.bernie.geckolib:geckolib-forge-1.12.2:3.0.31'
+    runtimeOnly 'software.bernie.geckolib:geckolib-forge-1.12.2:3.0.31'
+
     [
         "curse.maven:modularui-624243:7102461",
-        "curse.maven:modularmachinery-community-edition-817377:7306619",
         "curse.maven:extended-crafting-terminals-for-applied-1157825:6503414",
         "curse.maven:lumenized-1234162:6378222",
         "curse.maven:mantle-74924:2713386",
@@ -116,7 +126,6 @@ dependencies {
         "curse.maven:industrialcraft-2-242638:3078604",
         "curse.maven:mekanism-ce-unofficial-840735:5946841",
         "curse.maven:RedstoneFlux-270789:2920436",
-        "software.bernie.geckolib:geckolib-forge-1.12.2:3.0.31",
         "curse.maven:botania-225643:3330934",
         "curse.maven:astral-sorcery-241721:3044416",
         "curse.maven:baubles-227083:2518667",
@@ -152,7 +161,7 @@ dependencies {
         "curse.maven:packagedauto-308380:6932932",
         "curse.maven:packagedastral-811828:7063119"
     ].each {
-        implementation(rfg.deobf(it))
+        runtimeOnly(rfg.deobf(it))
     }
 
     // Optional compatibility integrations used by Core's mixins. Keep these
@@ -190,7 +199,7 @@ dependencies {
         "curse.maven:guide-api-228832:2645992",
         "curse.maven:patchouli-306770:3162874"
     ].each {
-        runtimeOnly(it)
+        runtimeOnly(rfg.deobf(it))
     }
 }
 

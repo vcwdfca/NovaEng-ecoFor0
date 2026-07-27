@@ -12,8 +12,14 @@ public final class Util {
 
     public static BlockArray.BlockInformation info(Block... blocks) {
         List<IBlockStateDescriptor> list = new ArrayList<>();
-        for(Block block : blocks) {
-            list.add(new IBlockStateDescriptor(block));
+        for (Block block : blocks) {
+            // Optional integration blocks are null when the integration is unavailable.
+            if (block != null) {
+                list.add(new IBlockStateDescriptor(block));
+            }
+        }
+        if (list.isEmpty()) {
+            throw new IllegalArgumentException("At least one block is required");
         }
         return new BlockArray.BlockInformation(list);
     }
@@ -21,7 +27,13 @@ public final class Util {
     public static BlockArray.BlockInformation info(IBlockState... blocks) {
         List<IBlockStateDescriptor> list = new ArrayList<>();
         for(IBlockState block : blocks) {
-            list.add(new IBlockStateDescriptor(block));
+            // Same as block
+            if(block != null) {
+                list.add(new IBlockStateDescriptor(block));
+            }
+        }
+        if(list.isEmpty()) {
+            throw new IllegalArgumentException("At least one block is required");
         }
         return new BlockArray.BlockInformation(list);
     }

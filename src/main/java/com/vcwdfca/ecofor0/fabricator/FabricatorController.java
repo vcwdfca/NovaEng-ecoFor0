@@ -1,6 +1,7 @@
-package com.vcwdfca.ecofor0.block;
+package com.vcwdfca.ecofor0.fabricator;
 
 import com.vcwdfca.ecofor0.util.IPatternAddition;
+import com.vcwdfca.ecofor0.util.IControllerLevelDisplay;
 import github.kasuminova.mmce.common.util.DynamicPattern;
 import github.kasuminova.novaeng.common.block.ecotech.efabricator.BlockEFabricatorCasing;
 import github.kasuminova.novaeng.common.block.ecotech.efabricator.BlockEFabricatorController;
@@ -18,18 +19,22 @@ import java.util.Collections;
 
 import static com.vcwdfca.ecofor0.util.Util.info;
 
-public class FabricatorController extends BlockEFabricatorController implements IPatternAddition {
+public class FabricatorController extends BlockEFabricatorController implements IPatternAddition, IControllerLevelDisplay {
 
     /** Core stops at L9 (16x); L13 continues that doubling progression. */
     public static final int L13_QUEUE_DEPTH_MULTIPLIER = 32;
     public static final int L13_ENERGY_USAGE_MULTIPLIER = 32;
-    private static final BlockArray.BlockInformation CASING = info(BlockEFabricatorCasing.INSTANCE);
-
     public static final FabricatorController L13 = new FabricatorController("l13");
+    private static final BlockArray.BlockInformation CASING = info(BlockEFabricatorCasing.INSTANCE);
 
     public FabricatorController(String level) {
         super(level);
         BlockEFabricatorController.REGISTRY.put(this.registryName, this);
+    }
+
+    @Override
+    public String getDisplayLevel() {
+        return "L13";
     }
 
     @Override
@@ -77,7 +82,7 @@ public class FabricatorController extends BlockEFabricatorController implements 
         TaggedPositionBlockArray partsEnd = new TaggedPositionBlockArray();
         partsEnd.addBlock(0, -1, 1, CASING);
         partsEnd.addBlock(0, -1, 0, CASING);
-        partsEnd.addBlock(0, 0, 0, CASING);
+        partsEnd.addBlock(0, 0, 0, info(FabricatorTail.L13.getStateFromMeta(2)));
         partsEnd.addBlock(0, 0, 1, CASING);
         partsEnd.addBlock(0, 1, 1, CASING);
         partsEnd.addBlock(0, 1, 0, CASING);

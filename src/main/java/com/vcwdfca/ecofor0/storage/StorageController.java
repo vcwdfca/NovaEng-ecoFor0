@@ -1,6 +1,7 @@
-package com.vcwdfca.ecofor0.block;
+package com.vcwdfca.ecofor0.storage;
 
 import com.vcwdfca.ecofor0.util.IPatternAddition;
+import com.vcwdfca.ecofor0.util.IControllerLevelDisplay;
 import github.kasuminova.mmce.common.util.DynamicPattern;
 import github.kasuminova.novaeng.common.block.ecotech.estorage.BlockEStorageCasing;
 import github.kasuminova.novaeng.common.block.ecotech.estorage.BlockEStorageCellDrive;
@@ -16,7 +17,7 @@ import java.util.Collections;
 
 import static com.vcwdfca.ecofor0.util.Util.info;
 
-public class StorageController extends BlockEStorageController implements IPatternAddition {
+public class StorageController extends BlockEStorageController implements IPatternAddition, IControllerLevelDisplay {
 
     private static final BlockArray.BlockInformation CASING = info(BlockEStorageCasing.INSTANCE);
     public static final StorageController L13 = new StorageController("l13");
@@ -24,6 +25,11 @@ public class StorageController extends BlockEStorageController implements IPatte
     public StorageController(String level) {
         super(level);
         BlockEStorageController.REGISTRY.put(this.registryName, this);
+    }
+
+    @Override
+    public String getDisplayLevel() {
+        return "L13";
     }
 
     @Override

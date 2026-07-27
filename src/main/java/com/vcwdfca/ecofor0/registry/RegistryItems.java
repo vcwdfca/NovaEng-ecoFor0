@@ -1,31 +1,32 @@
 package com.vcwdfca.ecofor0.registry;
 
 import com.vcwdfca.ecofor0.Tags;
-import com.vcwdfca.ecofor0.block.CalculatorController;
-import com.vcwdfca.ecofor0.block.CalculatorParallelProc;
-import com.vcwdfca.ecofor0.block.CalculatorTail;
-import com.vcwdfca.ecofor0.block.CalculatorThreadCore;
-import com.vcwdfca.ecofor0.block.CalculatorThreadCoreHyper;
-import com.vcwdfca.ecofor0.block.FabricatorController;
-import com.vcwdfca.ecofor0.block.FabricatorParallelProc;
-import com.vcwdfca.ecofor0.block.FabricatorTail;
-import com.vcwdfca.ecofor0.block.StorageController;
-import com.vcwdfca.ecofor0.block.StorageEnergyCell;
+import com.vcwdfca.ecofor0.calculator.CalculatorController;
+import com.vcwdfca.ecofor0.calculator.CalculatorParallelProc;
+import com.vcwdfca.ecofor0.calculator.CalculatorTail;
+import com.vcwdfca.ecofor0.calculator.CalculatorThreadCore;
+import com.vcwdfca.ecofor0.calculator.CalculatorThreadCoreHyper;
+import com.vcwdfca.ecofor0.fabricator.FabricatorController;
+import com.vcwdfca.ecofor0.fabricator.FabricatorParallelProc;
+import com.vcwdfca.ecofor0.fabricator.FabricatorTail;
+import com.vcwdfca.ecofor0.storage.StorageController;
+import com.vcwdfca.ecofor0.storage.StorageEnergyCell;
 import github.kasuminova.novaeng.common.block.ecotech.ecalculator.BlockECalculatorThreadCore;
+import github.kasuminova.novaeng.common.item.ecalculator.ItemECalculatorController;
 import github.kasuminova.novaeng.common.item.ecalculator.ItemECalculatorThreadCore;
+import github.kasuminova.novaeng.common.item.efabriactor.ItemEFabricatorController;
+import github.kasuminova.novaeng.common.item.estorage.ItemEStorageController;
 import hellfirepvp.modularmachinery.common.block.BlockController;
 import hellfirepvp.modularmachinery.common.item.ItemBlockController;
 import net.minecraft.block.Block;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import org.jetbrains.annotations.NotNull;
 
+import java.lang.reflect.Constructor;
 import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = Tags.MOD_ID)
@@ -46,9 +47,9 @@ public final class RegistryItems {
         event.getRegistry().register(createItemBlock(FabricatorParallelProc.L13));
         event.getRegistry().register(createItemBlock(FabricatorTail.L13));
 
-        event.getRegistry().register(createControllerItemBlock(StorageController.L13));
-        event.getRegistry().register(createControllerItemBlock(CalculatorController.L13));
-        event.getRegistry().register(createControllerItemBlock(FabricatorController.L13));
+        event.getRegistry().register(createControllerItemBlock(ItemEStorageController.class, StorageController.L13));
+        event.getRegistry().register(createControllerItemBlock(ItemECalculatorController.class, CalculatorController.L13));
+        event.getRegistry().register(createControllerItemBlock(ItemEFabricatorController.class, FabricatorController.L13));
     }
 
     private static ItemBlock createItemBlock(final Block block) {
@@ -56,7 +57,6 @@ public final class RegistryItems {
                 block.getRegistryName(), "block registryName must not be null");
         final ItemBlock itemBlock = new ItemBlock(block);
         itemBlock.setRegistryName(registryName);
-        itemBlock.setTranslationKey(block.getTranslationKey());
         return itemBlock;
     }
 
@@ -72,17 +72,17 @@ public final class RegistryItems {
         event.getRegistry().register(itemBlock);
     }
 
-    private static ItemBlockController createControllerItemBlock(final BlockController block) {
+    private static <C extends ItemBlockController> ItemBlockController createControllerItemBlock(Class<C> ctrl, final BlockController block) {
         final ResourceLocation registryName = Objects.requireNonNull(
                 block.getRegistryName(), "controller registryName must not be null");
-        final ItemBlockController itemBlock = new ItemBlockController(block) {
-            @Override
-            public @NotNull String getItemStackDisplayName(final @NotNull ItemStack stack) {
-                return I18n.format(getTranslationKey(stack) + ".name");
-            }
-        };
+        C itemBlock;
+        try {
+            Constructor<C> constructor = ctrl.getConstructor(BlockController.class);
+            itemBlock = constructor.newInstance(block);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to create controller item block", e);
+        }
         itemBlock.setRegistryName(registryName);
-        itemBlock.setTranslationKey(block.getTranslationKey());
         return itemBlock;
     }
 }

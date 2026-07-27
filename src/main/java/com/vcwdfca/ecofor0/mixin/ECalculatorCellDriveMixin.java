@@ -1,6 +1,6 @@
 package com.vcwdfca.ecofor0.mixin;
 
-import com.vcwdfca.ecofor0.block.CalculatorController;
+import com.vcwdfca.ecofor0.calculator.CalculatorController;
 import github.kasuminova.novaeng.common.block.ecotech.ecalculator.prop.DriveStorageLevel;
 import github.kasuminova.novaeng.common.block.ecotech.ecalculator.prop.Levels;
 import github.kasuminova.novaeng.common.item.ecalculator.ECalculatorCell;

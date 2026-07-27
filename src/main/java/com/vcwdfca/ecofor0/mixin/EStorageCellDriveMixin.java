@@ -1,6 +1,6 @@
 package com.vcwdfca.ecofor0.mixin;
 
-import com.vcwdfca.ecofor0.block.StorageController;
+import com.vcwdfca.ecofor0.storage.StorageController;
 import github.kasuminova.novaeng.common.block.ecotech.estorage.BlockEStorageController;
 import github.kasuminova.novaeng.common.block.ecotech.estorage.prop.DriveStorageLevel;
 import github.kasuminova.novaeng.common.tile.ecotech.estorage.EStorageCellDrive;

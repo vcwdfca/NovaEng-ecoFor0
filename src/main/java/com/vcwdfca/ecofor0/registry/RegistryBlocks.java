@@ -1,16 +1,16 @@
 package com.vcwdfca.ecofor0.registry;
 
 import com.vcwdfca.ecofor0.Tags;
-import com.vcwdfca.ecofor0.block.CalculatorController;
-import com.vcwdfca.ecofor0.block.CalculatorParallelProc;
-import com.vcwdfca.ecofor0.block.CalculatorTail;
-import com.vcwdfca.ecofor0.block.CalculatorThreadCore;
-import com.vcwdfca.ecofor0.block.CalculatorThreadCoreHyper;
-import com.vcwdfca.ecofor0.block.FabricatorController;
-import com.vcwdfca.ecofor0.block.FabricatorParallelProc;
-import com.vcwdfca.ecofor0.block.FabricatorTail;
-import com.vcwdfca.ecofor0.block.StorageController;
-import com.vcwdfca.ecofor0.block.StorageEnergyCell;
+import com.vcwdfca.ecofor0.calculator.CalculatorController;
+import com.vcwdfca.ecofor0.calculator.CalculatorParallelProc;
+import com.vcwdfca.ecofor0.calculator.CalculatorTail;
+import com.vcwdfca.ecofor0.calculator.CalculatorThreadCore;
+import com.vcwdfca.ecofor0.calculator.CalculatorThreadCoreHyper;
+import com.vcwdfca.ecofor0.fabricator.FabricatorController;
+import com.vcwdfca.ecofor0.fabricator.FabricatorParallelProc;
+import com.vcwdfca.ecofor0.fabricator.FabricatorTail;
+import com.vcwdfca.ecofor0.storage.StorageController;
+import com.vcwdfca.ecofor0.storage.StorageEnergyCell;
 import net.minecraft.block.Block;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
