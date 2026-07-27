@@ -1,6 +1,7 @@
 package com.vcwdfca.ecofor0.registry;
 
 import com.vcwdfca.ecofor0.Tags;
+import com.vcwdfca.ecofor0.calculator.CalculatorCell;
 import com.vcwdfca.ecofor0.calculator.CalculatorController;
 import com.vcwdfca.ecofor0.calculator.CalculatorParallelProc;
 import com.vcwdfca.ecofor0.calculator.CalculatorTail;
@@ -11,10 +12,17 @@ import com.vcwdfca.ecofor0.fabricator.FabricatorParallelProc;
 import com.vcwdfca.ecofor0.fabricator.FabricatorTail;
 import com.vcwdfca.ecofor0.storage.StorageController;
 import com.vcwdfca.ecofor0.storage.StorageEnergyCell;
+import com.vcwdfca.ecofor0.storage.StorageCellFluid;
+import com.vcwdfca.ecofor0.storage.StorageCellGas;
+import com.vcwdfca.ecofor0.storage.StorageCellItem;
+import github.kasuminova.novaeng.common.block.ecotech.ecalculator.BlockECalculatorParallelProc;
 import github.kasuminova.novaeng.common.block.ecotech.ecalculator.BlockECalculatorThreadCore;
+import github.kasuminova.novaeng.common.block.ecotech.efabricator.BlockEFabricatorParallelProc;
 import github.kasuminova.novaeng.common.item.ecalculator.ItemECalculatorController;
+import github.kasuminova.novaeng.common.item.ecalculator.ItemECalculatorParallelProc;
 import github.kasuminova.novaeng.common.item.ecalculator.ItemECalculatorThreadCore;
 import github.kasuminova.novaeng.common.item.efabriactor.ItemEFabricatorController;
+import github.kasuminova.novaeng.common.item.efabriactor.ItemEFabricatorParallelProc;
 import github.kasuminova.novaeng.common.item.estorage.ItemEStorageController;
 import hellfirepvp.modularmachinery.common.block.BlockController;
 import hellfirepvp.modularmachinery.common.item.ItemBlockController;
@@ -23,6 +31,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -38,13 +47,19 @@ public final class RegistryItems {
     @SubscribeEvent
     public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
         event.getRegistry().register(createItemBlock(StorageEnergyCell.L13));
+        event.getRegistry().register(CalculatorCell.L13);
+        event.getRegistry().register(StorageCellItem.L13);
+        event.getRegistry().register(StorageCellFluid.L13);
+        if(Loader.isModLoaded("mekeng")) {
+            event.getRegistry().register(StorageCellGas.L13);
+        }
 
         registerThreadCoreWithItem(event, CalculatorThreadCore.L13);
         registerThreadCoreWithItem(event, CalculatorThreadCoreHyper.L13);
-        event.getRegistry().register(createItemBlock(CalculatorParallelProc.L13));
+        event.getRegistry().register(createCalculatorParallelProcItem(CalculatorParallelProc.L13));
         event.getRegistry().register(createItemBlock(CalculatorTail.L13));
 
-        event.getRegistry().register(createItemBlock(FabricatorParallelProc.L13));
+        event.getRegistry().register(createFabricatorParallelProcItem(FabricatorParallelProc.L13));
         event.getRegistry().register(createItemBlock(FabricatorTail.L13));
 
         event.getRegistry().register(createControllerItemBlock(ItemEStorageController.class, StorageController.L13));
@@ -56,6 +71,26 @@ public final class RegistryItems {
         final ResourceLocation registryName = Objects.requireNonNull(
                 block.getRegistryName(), "block registryName must not be null");
         final ItemBlock itemBlock = new ItemBlock(block);
+        itemBlock.setRegistryName(registryName);
+        return itemBlock;
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private static ItemECalculatorParallelProc createCalculatorParallelProcItem(
+            final BlockECalculatorParallelProc block) {
+        final ResourceLocation registryName = Objects.requireNonNull(
+                block.getRegistryName(), "block registryName must not be null");
+        final ItemECalculatorParallelProc itemBlock = new ItemECalculatorParallelProc(block);
+        itemBlock.setRegistryName(registryName);
+        return itemBlock;
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private static ItemEFabricatorParallelProc createFabricatorParallelProcItem(
+            final BlockEFabricatorParallelProc block) {
+        final ResourceLocation registryName = Objects.requireNonNull(
+                block.getRegistryName(), "block registryName must not be null");
+        final ItemEFabricatorParallelProc itemBlock = new ItemEFabricatorParallelProc(block);
         itemBlock.setRegistryName(registryName);
         return itemBlock;
     }

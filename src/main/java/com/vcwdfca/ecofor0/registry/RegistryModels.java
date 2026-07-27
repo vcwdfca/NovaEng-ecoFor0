@@ -2,6 +2,7 @@ package com.vcwdfca.ecofor0.registry;
 
 import com.vcwdfca.ecofor0.Tags;
 import com.vcwdfca.ecofor0.calculator.CalculatorController;
+import com.vcwdfca.ecofor0.calculator.CalculatorCell;
 import com.vcwdfca.ecofor0.calculator.CalculatorParallelProc;
 import com.vcwdfca.ecofor0.calculator.CalculatorTail;
 import com.vcwdfca.ecofor0.calculator.CalculatorThreadCore;
@@ -11,6 +12,9 @@ import com.vcwdfca.ecofor0.fabricator.FabricatorParallelProc;
 import com.vcwdfca.ecofor0.fabricator.FabricatorTail;
 import com.vcwdfca.ecofor0.storage.StorageController;
 import com.vcwdfca.ecofor0.storage.StorageEnergyCell;
+import com.vcwdfca.ecofor0.storage.StorageCellFluid;
+import com.vcwdfca.ecofor0.storage.StorageCellGas;
+import com.vcwdfca.ecofor0.storage.StorageCellItem;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Items;
@@ -18,6 +22,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -41,6 +46,12 @@ public final class RegistryModels {
     @SubscribeEvent
     public static void onRegisterModels(final ModelRegistryEvent event) {
         registerInventoryModel(StorageEnergyCell.L13);
+        registerInventoryModel(CalculatorCell.L13);
+        registerInventoryModel(StorageCellItem.L13);
+        registerInventoryModel(StorageCellFluid.L13);
+        if(Loader.isModLoaded("mekeng")) {
+            registerInventoryModel(StorageCellGas.L13);
+        }
 
         registerInventoryModel(CalculatorThreadCore.L13);
         registerInventoryModel(CalculatorThreadCoreHyper.L13);
@@ -63,6 +74,13 @@ public final class RegistryModels {
         final ResourceLocation registryName = Objects.requireNonNull(
                 block.getRegistryName(),
                 "Block registryName must not be null for model registration: " + block.getClass().getName());
+        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(registryName, "inventory"));
+    }
+
+    private static void registerInventoryModel(final Item item) {
+        final ResourceLocation registryName = Objects.requireNonNull(
+                item.getRegistryName(),
+                "Item registryName must not be null for model registration: " + item.getClass().getName());
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(registryName, "inventory"));
     }
 }

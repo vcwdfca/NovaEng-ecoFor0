@@ -1,13 +1,21 @@
 tile.novaeng_core.estorage_energy_cell_l13.name=§9ECO - §cST13 §9High-Density Energy Cell
-tile.novaeng_core.ecalculator_thread_core_l13.name=§9ECO - §cCA13 §9Computing Core - Thread Core
-tile.novaeng_core.ecalculator_thread_core_hyper_l13.name=§9ECO - §cCA13 §9Computing Core - Hyper Thread Core
-tile.novaeng_core.ecalculator_parallel_proc_l13.name=§9ECO - §cCA13 §9Computing Core - Parallel Processor
-tile.novaeng_core.ecalculator_tail_l13.name=§9ECO - §cCA13 §9Computing Core - Tail Component
-tile.novaeng_core.efabricator_parallel_proc_l13.name=§9ECO - §cFA13 §9Fabricator Core - Parallel Processor
-tile.novaeng_core.efabricator_tail_l13.name=§9ECO - §cFA13 §9Fabricator Core - Tail Component
+tile.novaeng_core.ecalculator_thread_core_l13.name=§9ECO - §cCM13A §bThread Core
+tile.novaeng_core.ecalculator_thread_core_hyper_l13.name=§9ECO - §cCM13B §9Hyper Thread Core
+tile.novaeng_core.ecalculator_parallel_proc_l13.name=§9ECO - §cCT13 §5Parallel Core
+tile.novaeng_core.ecalculator_tail_l13.name=§bComputing System Heat Dissipation Controller - §cC13
+tile.novaeng_core.efabricator_parallel_proc_l13.name=§9ECO - §cFT13 §5Parallel Core
+tile.novaeng_core.efabricator_tail_l13.name=§eFabricator System Connector - §cF13
 tile.novaeng_core.extendable_digital_storage_subsystem_l13.name=§9ECO - §cS13 §9Extendable Digital Storage Subsystem Host
 tile.novaeng_core.extendable_calculator_subsystem_l13.name=§9ECO - §cC13 §bExtendable Calculator Subsystem Host
 tile.novaeng_core.extendable_fabricator_subsystem_l13.name=§9ECO - §cF13 §eExtendable Fabricator Subsystem Host
+
+item.novaeng_core.ecalculator_cell_262144m.name=§9ECO - §cCE13 §bFlash Crystal Array
+item.novaeng_core.estorage_cell_item_1024m.name=§9ECO - §cSE13 §9Storage Matrix §a(Item)
+item.novaeng_core.estorage_cell_fluid_1024m.name=§9ECO - §cSE13 §9Storage Matrix §b(Fluid)
+item.novaeng_core.estorage_cell_gas_1024m.name=§9ECO - §cSE13 §9Storage Matrix §b(Gas)
+
+novaeng.ecalculator_cell.l13.tip=§cOnly a §cC13§c host can drive this flash crystal array.
+novaeng.estorage_cell.l13.tip=§cOnly a §cS13§c host can drive this storage matrix.
 
 modularmachinery.extendable_digital_storage_subsystem_l13=§9ECO - §cS13 §9Extendable Digital Storage Subsystem Host
 modularmachinery.extendable_calculator_subsystem_l13=§9ECO - §cC13 §bExtendable Calculator Subsystem Host
