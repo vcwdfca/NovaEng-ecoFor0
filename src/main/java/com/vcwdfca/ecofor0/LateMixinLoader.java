@@ -1,4 +1,4 @@
-package com.vcwdfca.ecofor0.mixin;
+package com.vcwdfca.ecofor0;
 
 import zone.rong.mixinbooter.ILateMixinLoader;
 
