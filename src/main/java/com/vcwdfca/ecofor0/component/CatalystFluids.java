@@ -1,8 +1,11 @@
 package com.vcwdfca.ecofor0.component;
 
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.*;
-import java.util.*;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidTankProperties;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /** The same auxiliary-inventory route used by MMCE; recipe chance determines consumption. */
 public final class CatalystFluids implements IFluidHandler {

@@ -1,7 +1,8 @@
 package com.vcwdfca.ecofor0.component;
 
-import net.minecraft.nbt.*;
-import net.minecraftforge.fluids.*;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.items.ItemStackHandler;
 
 /**

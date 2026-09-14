@@ -4,7 +4,7 @@ import com.vcwdfca.ecofor0.network.AssemblyNetwork;
 import com.vcwdfca.ecofor0.network.packet.PatternGuiPacket;
 import com.vcwdfca.ecofor0.component.AssemblyResource;
 import com.vcwdfca.ecofor0.common.container.CatalystContainer;
-import net.minecraft.client.gui.*;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.resources.I18n;
@@ -13,7 +13,9 @@ import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public final class GuiCatalyst extends GuiContainer {
 

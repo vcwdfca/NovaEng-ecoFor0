@@ -5,13 +5,16 @@ import appeng.me.GridAccessException;
 import com.vcwdfca.ecofor0.network.AssemblyNetwork;
 import com.vcwdfca.ecofor0.component.FrequencyData;
 import github.kasuminova.mmce.common.tile.base.MEMachineComponent;
-import net.minecraft.entity.player.*;
-import net.minecraft.inventory.*;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IContainerListener;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.*;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.UUID;
 
 public final class FrequencyContainer extends Container {
     public final MEMachineComponent tile;
