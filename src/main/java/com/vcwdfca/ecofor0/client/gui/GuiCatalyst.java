@@ -28,12 +28,6 @@ public final class GuiCatalyst extends GuiContainer {
         ySize = 196;
     }
 
-    @Override
-    public void initGui() {
-        super.initGui();
-        buttonList.add(new GuiButton(0, guiLeft + 142, guiTop + 85, 44, 20, I18n.format("superpatternassembly.wireless.back")));
-    }
-
     private int tankAt(int x, int y) {
         x -= guiLeft + 98; y -= guiTop + 30;
         return x >= 0 && y >= 0 && x < 54 && y < 54 && x % 18 < 16 && y % 18 < 16 ? y / 18 * 3 + x / 18 : -1;
@@ -41,7 +35,9 @@ public final class GuiCatalyst extends GuiContainer {
 
     @Override
     public void drawScreen(int x, int y, float partial) {
-        drawDefaultBackground(); super.drawScreen(x, y, partial); renderHoveredToolTip(x, y);
+        drawDefaultBackground();
+        super.drawScreen(x, y, partial);
+        renderHoveredToolTip(x, y);
         int tank = tankAt(x, y);
         if (tank >= 0) {
             FluidStack fluid = container.getBank().fluids()[tank].getFluid();

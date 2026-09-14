@@ -1,9 +1,9 @@
 {
   "parent": "block/block",
   "textures": {
-    "particle": "superpatternassembly:blocks/casing",
-    "casing": "superpatternassembly:blocks/casing",
-    "overlay": "superpatternassembly:blocks/me_buffer_hatch"
+    "particle": "ecofor0:blocks/casing",
+    "casing": "ecofor0:blocks/casing",
+    "overlay": "ecofor0:blocks/me_buffer_hatch"
   },
   "elements": [
     {
