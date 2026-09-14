@@ -17,6 +17,7 @@ item.novaeng_core.estorage_cell_gas_1024m.name=§9ECO - §cSE13 §9存储矩阵�
 
 novaeng.ecalculator_cell.l13.tip=§c只有 §cC13§c 等级的主机可以驱动此晶阵。
 novaeng.estorage_cell.l13.tip=§c只有 §cS13§c 等级的主机可以驱动此矩阵。
+ecofor0.salute=§cT§6h§ea§an§bk§9s §dt§co §6f§eo§ar§be§9s§dt§cj
 superpatternassembly.block_source=§7方块来源：§cG§6r§ee§ag§bT§9e§dc§ch §6L§ee§ai§bs§9u§dr§ce§r
 superpatternassembly.tooltip.batching=§f自带§6样板倍增§f功能，只需填写基础数量的样板，下单时会一次性发配所需求数。
 superpatternassembly.tooltip.output=§f自带§6ME输出§f功能，无需放置额外的输出舱室。

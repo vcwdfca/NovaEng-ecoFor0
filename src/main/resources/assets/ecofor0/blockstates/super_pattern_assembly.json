@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "normal": {
+      "model": "superpatternassembly:super_pattern_assembly"
+    },
+    "inventory": {
+      "model": "superpatternassembly:super_pattern_assembly"
+    }
+  }
+}

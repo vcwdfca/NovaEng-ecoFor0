@@ -17,7 +17,8 @@ item.novaeng_core.estorage_cell_gas_1024m.name=§9ECO - §cSE13 §9Storage Matri
 
 novaeng.ecalculator_cell.l13.tip=§cOnly a §cC13§c host can drive this flash crystal array.
 novaeng.estorage_cell.l13.tip=§cOnly a §cS13§c host can drive this storage matrix.
-superpatternassembly.block_source=§7方块来源：§cG§6r§ee§ag§bT§9e§dc§ch §6L§ee§ai§bs§9u§dr§ce§r
+ecofor0.salute=§cT§6h§ea§an§bk§9s §dt§co §6f§eo§ar§be§9s§dt§cj
+superpatternassembly.block_source=§7Block Source：§cG§6r§ee§ag§bT§9e§dc§ch §6L§ee§ai§bs§9u§dr§ce§r
 superpatternassembly.tooltip.batching=§fBuilt-in §6pattern multiplication§f: encode base quantities and deliver the requested amount in one batch.
 superpatternassembly.tooltip.output=§fBuilt-in §6ME output§f, without additional output hatches.
 superpatternassembly.tooltip.catalyst=§fUse the §bmiddle mouse button§f on a pattern slot to open its dedicated §6catalyst slots§f. The §6catalyst§f slots on the right are shared by all patterns.

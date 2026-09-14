@@ -1,6 +1,7 @@
 package com.vcwdfca.ecofor0.registry;
 
 import com.vcwdfca.ecofor0.Tags;
+import com.vcwdfca.ecofor0.block.BlockSuperPatternAssembly;
 import com.vcwdfca.ecofor0.block.calculator.CalculatorController;
 import com.vcwdfca.ecofor0.block.calculator.CalculatorCell;
 import com.vcwdfca.ecofor0.block.calculator.CalculatorParallelProc;
@@ -22,7 +23,6 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -49,9 +49,7 @@ public final class RegistryModels {
         registerInventoryModel(CalculatorCell.L13);
         registerInventoryModel(StorageCellItem.L13);
         registerInventoryModel(StorageCellFluid.L13);
-        if(Loader.isModLoaded("mekeng")) {
-            registerInventoryModel(StorageCellGas.L13);
-        }
+        registerInventoryModel(StorageCellGas.L13);
 
         registerInventoryModel(CalculatorThreadCore.L13);
         registerInventoryModel(CalculatorThreadCoreHyper.L13);
@@ -64,17 +62,23 @@ public final class RegistryModels {
         registerInventoryModel(StorageController.L13);
         registerInventoryModel(CalculatorController.L13);
         registerInventoryModel(FabricatorController.L13);
+
+        registerInventoryModel(BlockSuperPatternAssembly.INSTANCE, "normal");
     }
 
-    private static void registerInventoryModel(final Block block) {
+    private static void registerInventoryModel(final Block block, String variantIn) {
         final Item item = Item.getItemFromBlock(block);
         if (item == Items.AIR) {
             throw new IllegalStateException("No ItemBlock registered for " + block.getRegistryName());
         }
         final ResourceLocation registryName = Objects.requireNonNull(
-                block.getRegistryName(),
-                "Block registryName must not be null for model registration: " + block.getClass().getName());
-        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(registryName, "inventory"));
+            block.getRegistryName(),
+            "Block registryName must not be null for model registration: " + block.getClass().getName());
+        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(registryName, variantIn));
+    }
+
+    private static void registerInventoryModel(final Block block) {
+        registerInventoryModel(block, "inventory");
     }
 
     private static void registerInventoryModel(final Item item) {

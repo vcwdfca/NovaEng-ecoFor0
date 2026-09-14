@@ -111,5 +111,6 @@ public final class BlockSuperPatternAssembly extends BlockMEPatternProvider {
         lines.add(I18n.format("superpatternassembly.tooltip.catalyst"));
         lines.add(I18n.format("superpatternassembly.tooltip.pages"));
         lines.add(I18n.format("superpatternassembly.block_source"));
+        lines.add(I18n.format("ecofor0.salute"));
     }
 }
