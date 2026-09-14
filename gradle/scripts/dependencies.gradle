@@ -91,10 +91,12 @@ dependencies {
     // dependencies.
     [
         "curse.maven:modularmachinery-community-edition-817377:7306619",
-        "curse.maven:ae2-extended-life-570458:6302098"
+        "curse.maven:ae2-extended-life-570458:6302098",
+        "curse.maven:mekanism-ce-unofficial-840735:5946841",
+        "curse.maven:ae2fluidcraft-rework-unofficial-1404390:7336029",
+        "curse.maven:MekanismEnergistics-1027681:5775101"
     ].each {
-        compileOnly(rfg.deobf(it))
-        runtimeOnly(rfg.deobf(it))
+        implementation(rfg.deobf(it))
     }
 
     compileOnly 'software.bernie.geckolib:geckolib-forge-1.12.2:3.0.31'
@@ -116,15 +118,12 @@ dependencies {
         "curse.maven:the-one-probe-245211:2667280",
         "curse.maven:FTB-Library-237167:2985811",
         "curse.maven:FTBU-237102:3157548",
-        "curse.maven:ae2-extended-life-570458:6302098",
-        "curse.maven:ae2fluidcraft-rework-unofficial-1404390:7336029",
         "curse.maven:nae2-884359:5380800",
         "curse.maven:CodeChickenLib-242818:2779848",
         "curse.maven:wanionlib-253043:4623135",
         "curse.maven:avaritia-1-1x-unofficial-1165010:7939693",
         "curse.maven:eternal-singularity-253077:2922583",
         "curse.maven:industrialcraft-2-242638:3078604",
-        "curse.maven:mekanism-ce-unofficial-840735:5946841",
         "curse.maven:RedstoneFlux-270789:2920436",
         "curse.maven:botania-225643:3330934",
         "curse.maven:astral-sorcery-241721:3044416",
@@ -169,7 +168,6 @@ dependencies {
     // treated as mandatory runtime dependencies of ECOFor0.
     [
         "curse.maven:electroblobs-wizardry-265642:5354477",
-        "curse.maven:MekanismEnergistics-1027681:5775101",
         "curse.maven:optifine-check-626981:3806565",
         "curse.maven:nuclearcraft-overhauled-336895:3862197",
         "curse.maven:matter-overdrive-community-edition-557428:4592069",

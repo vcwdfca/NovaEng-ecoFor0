@@ -67,6 +67,18 @@ java {
     }
 }
 
+sourceSets {
+    api {
+        java {
+            srcDir 'src/api/java'
+        }
+    }
+
+    main {
+        compileClasspath += sourceSets.api.output
+    }
+}
+
 minecraft {
     mcVersion.set('1.12.2')
 

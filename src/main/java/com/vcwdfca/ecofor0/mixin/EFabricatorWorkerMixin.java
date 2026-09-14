@@ -1,6 +1,6 @@
 package com.vcwdfca.ecofor0.mixin;
 
-import com.vcwdfca.ecofor0.fabricator.FabricatorController;
+import com.vcwdfca.ecofor0.block.fabricator.FabricatorController;
 import github.kasuminova.novaeng.common.block.ecotech.efabricator.prop.Levels;
 import github.kasuminova.novaeng.common.tile.ecotech.efabricator.EFabricatorController;
 import github.kasuminova.novaeng.common.tile.ecotech.efabricator.EFabricatorWorker;

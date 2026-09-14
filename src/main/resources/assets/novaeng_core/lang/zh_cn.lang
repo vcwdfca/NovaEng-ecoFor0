@@ -8,6 +8,7 @@ tile.novaeng_core.efabricator_tail_l13.name=§e合成系统结构连结器 - §c
 tile.novaeng_core.extendable_digital_storage_subsystem_l13.name=§9ECO - §cS13 §9可扩展存储子系统主机
 tile.novaeng_core.extendable_calculator_subsystem_l13.name=§9ECO - §cC13 §b可扩展计算子系统主机
 tile.novaeng_core.extendable_fabricator_subsystem_l13.name=§9ECO - §cF13 §e可扩展合成子系统主机
+tile.ecofor0.super_pattern_assembly.name=超级样板总成
 
 item.novaeng_core.ecalculator_cell_262144m.name=§9ECO - §cCE13 §b闪存晶阵
 item.novaeng_core.estorage_cell_item_1024m.name=§9ECO - §cSE13 §9存储矩阵§a（物品）
@@ -16,6 +17,15 @@ item.novaeng_core.estorage_cell_gas_1024m.name=§9ECO - §cSE13 §9存储矩阵�
 
 novaeng.ecalculator_cell.l13.tip=§c只有 §cC13§c 等级的主机可以驱动此晶阵。
 novaeng.estorage_cell.l13.tip=§c只有 §cS13§c 等级的主机可以驱动此矩阵。
+superpatternassembly.block_source=§7方块来源：§cG§6r§ee§ag§bT§9e§dc§ch §6L§ee§ai§bs§9u§dr§ce§r
+superpatternassembly.tooltip.batching=§f自带§6样板倍增§f功能，只需填写基础数量的样板，下单时会一次性发配所需求数。
+superpatternassembly.tooltip.output=§f自带§6ME输出§f功能，无需放置额外的输出舱室。
+superpatternassembly.tooltip.catalyst=§f对槽位§b中键§f打开专用§6催化剂槽§f，右侧§6催化剂§f栏位与所有样板共享。
+superpatternassembly.tooltip.pages=§f拥有§6四页样板槽§f，每页36个，共144个槽位。
+superpatternassembly.catalyst.title=样板 %s 的催化剂槽
+superpatternassembly.catalyst.items=物品
+superpatternassembly.catalyst.fluids=流体
+superpatternassembly.catalyst.fluid_hint=手持容器：左键存入流体，右键取出流体
 
 modularmachinery.extendable_digital_storage_subsystem_l13=§9ECO - §cS13 §9可扩展存储子系统主机
 modularmachinery.extendable_calculator_subsystem_l13=§9ECO - §cC13 §b可扩展计算子系统主机

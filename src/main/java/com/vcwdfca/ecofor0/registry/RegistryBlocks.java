@@ -1,16 +1,17 @@
 package com.vcwdfca.ecofor0.registry;
 
 import com.vcwdfca.ecofor0.Tags;
-import com.vcwdfca.ecofor0.calculator.CalculatorController;
-import com.vcwdfca.ecofor0.calculator.CalculatorParallelProc;
-import com.vcwdfca.ecofor0.calculator.CalculatorTail;
-import com.vcwdfca.ecofor0.calculator.CalculatorThreadCore;
-import com.vcwdfca.ecofor0.calculator.CalculatorThreadCoreHyper;
-import com.vcwdfca.ecofor0.fabricator.FabricatorController;
-import com.vcwdfca.ecofor0.fabricator.FabricatorParallelProc;
-import com.vcwdfca.ecofor0.fabricator.FabricatorTail;
-import com.vcwdfca.ecofor0.storage.StorageController;
-import com.vcwdfca.ecofor0.storage.StorageEnergyCell;
+import com.vcwdfca.ecofor0.block.calculator.CalculatorController;
+import com.vcwdfca.ecofor0.block.calculator.CalculatorParallelProc;
+import com.vcwdfca.ecofor0.block.calculator.CalculatorTail;
+import com.vcwdfca.ecofor0.block.calculator.CalculatorThreadCore;
+import com.vcwdfca.ecofor0.block.calculator.CalculatorThreadCoreHyper;
+import com.vcwdfca.ecofor0.block.fabricator.FabricatorController;
+import com.vcwdfca.ecofor0.block.fabricator.FabricatorParallelProc;
+import com.vcwdfca.ecofor0.block.fabricator.FabricatorTail;
+import com.vcwdfca.ecofor0.block.storage.StorageController;
+import com.vcwdfca.ecofor0.block.storage.StorageEnergyCell;
+import com.vcwdfca.ecofor0.block.BlockSuperPatternAssembly;
 import net.minecraft.block.Block;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -37,6 +38,8 @@ public final class RegistryBlocks {
         event.getRegistry().register(StorageController.L13);
         event.getRegistry().register(CalculatorController.L13);
         event.getRegistry().register(FabricatorController.L13);
+
+        event.getRegistry().register(BlockSuperPatternAssembly.INSTANCE);
     }
 
 }

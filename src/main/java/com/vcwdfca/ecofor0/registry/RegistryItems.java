@@ -1,20 +1,21 @@
 package com.vcwdfca.ecofor0.registry;
 
 import com.vcwdfca.ecofor0.Tags;
-import com.vcwdfca.ecofor0.calculator.CalculatorCell;
-import com.vcwdfca.ecofor0.calculator.CalculatorController;
-import com.vcwdfca.ecofor0.calculator.CalculatorParallelProc;
-import com.vcwdfca.ecofor0.calculator.CalculatorTail;
-import com.vcwdfca.ecofor0.calculator.CalculatorThreadCore;
-import com.vcwdfca.ecofor0.calculator.CalculatorThreadCoreHyper;
-import com.vcwdfca.ecofor0.fabricator.FabricatorController;
-import com.vcwdfca.ecofor0.fabricator.FabricatorParallelProc;
-import com.vcwdfca.ecofor0.fabricator.FabricatorTail;
-import com.vcwdfca.ecofor0.storage.StorageController;
-import com.vcwdfca.ecofor0.storage.StorageEnergyCell;
-import com.vcwdfca.ecofor0.storage.StorageCellFluid;
-import com.vcwdfca.ecofor0.storage.StorageCellGas;
-import com.vcwdfca.ecofor0.storage.StorageCellItem;
+import com.vcwdfca.ecofor0.block.calculator.CalculatorCell;
+import com.vcwdfca.ecofor0.block.calculator.CalculatorController;
+import com.vcwdfca.ecofor0.block.calculator.CalculatorParallelProc;
+import com.vcwdfca.ecofor0.block.calculator.CalculatorTail;
+import com.vcwdfca.ecofor0.block.calculator.CalculatorThreadCore;
+import com.vcwdfca.ecofor0.block.calculator.CalculatorThreadCoreHyper;
+import com.vcwdfca.ecofor0.block.fabricator.FabricatorController;
+import com.vcwdfca.ecofor0.block.fabricator.FabricatorParallelProc;
+import com.vcwdfca.ecofor0.block.fabricator.FabricatorTail;
+import com.vcwdfca.ecofor0.block.storage.StorageController;
+import com.vcwdfca.ecofor0.block.storage.StorageEnergyCell;
+import com.vcwdfca.ecofor0.block.storage.StorageCellFluid;
+import com.vcwdfca.ecofor0.block.storage.StorageCellGas;
+import com.vcwdfca.ecofor0.block.storage.StorageCellItem;
+import com.vcwdfca.ecofor0.block.BlockSuperPatternAssembly;
 import github.kasuminova.novaeng.common.block.ecotech.ecalculator.BlockECalculatorParallelProc;
 import github.kasuminova.novaeng.common.block.ecotech.ecalculator.BlockECalculatorThreadCore;
 import github.kasuminova.novaeng.common.block.ecotech.efabricator.BlockEFabricatorParallelProc;
@@ -31,7 +32,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -50,9 +50,8 @@ public final class RegistryItems {
         event.getRegistry().register(CalculatorCell.L13);
         event.getRegistry().register(StorageCellItem.L13);
         event.getRegistry().register(StorageCellFluid.L13);
-        if(Loader.isModLoaded("mekeng")) {
-            event.getRegistry().register(StorageCellGas.L13);
-        }
+        event.getRegistry().register(StorageCellGas.L13);
+        event.getRegistry().register(BlockSuperPatternAssembly.ITEM_INSTANCE);
 
         registerThreadCoreWithItem(event, CalculatorThreadCore.L13);
         registerThreadCoreWithItem(event, CalculatorThreadCoreHyper.L13);

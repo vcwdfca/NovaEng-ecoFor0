@@ -1,0 +1,78 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "particle": "superpatternassembly:blocks/casing",
+    "casing": "superpatternassembly:blocks/casing",
+    "overlay": "superpatternassembly:blocks/me_buffer_hatch"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#casing",
+          "cullface": "down"
+        },
+        "up": {
+          "texture": "#casing",
+          "cullface": "up"
+        },
+        "north": {
+          "texture": "#casing",
+          "cullface": "north"
+        },
+        "south": {
+          "texture": "#casing",
+          "cullface": "south"
+        },
+        "west": {
+          "texture": "#casing",
+          "cullface": "west"
+        },
+        "east": {
+          "texture": "#casing",
+          "cullface": "east"
+        }
+      }
+    },
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "north": {
+          "texture": "#overlay",
+          "cullface": "north"
+        },
+        "south": {
+          "texture": "#overlay",
+          "cullface": "south"
+        },
+        "west": {
+          "texture": "#overlay",
+          "cullface": "west"
+        },
+        "east": {
+          "texture": "#overlay",
+          "cullface": "east"
+        }
+      }
+    }
+  ]
+}

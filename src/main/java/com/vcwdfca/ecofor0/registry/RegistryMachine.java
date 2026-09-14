@@ -1,8 +1,8 @@
 package com.vcwdfca.ecofor0.registry;
 
-import com.vcwdfca.ecofor0.calculator.CalculatorController;
-import com.vcwdfca.ecofor0.fabricator.FabricatorController;
-import com.vcwdfca.ecofor0.storage.StorageController;
+import com.vcwdfca.ecofor0.block.calculator.CalculatorController;
+import com.vcwdfca.ecofor0.block.fabricator.FabricatorController;
+import com.vcwdfca.ecofor0.block.storage.StorageController;
 import com.vcwdfca.ecofor0.util.IControllerLevelDisplay;
 import com.vcwdfca.ecofor0.util.IPatternAddition;
 import hellfirepvp.modularmachinery.common.block.BlockController;
